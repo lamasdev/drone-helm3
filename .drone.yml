@@ -1,7 +1,10 @@
 kind: pipeline
-type: docker
+type: kubernetes
 name: default
 
+platform:
+  os: linux
+  arch: arm64
 
 steps:
   - name: test
@@ -17,10 +20,10 @@ steps:
     image: golang:1.13
     commands:
       - go build -o build/drone-helm cmd/drone-helm/main.go
-  - name: publish_linux_amd64
+  - name: publish_linux_arm64
     image: plugins/docker
     settings:
-      auto_tag: true
+      auto_tag: false
       username:
         from_secret: docker_username
       password:
