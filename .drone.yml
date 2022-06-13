@@ -12,10 +12,6 @@ steps:
     commands:
       - go test ./cmd/... ./internal/...
       - go vet ./cmd/... ./internal/...
-  - name: lint
-    image: cytopia/golint
-    commands:
-      - golint -set_exit_status ./cmd/... ./internal/...
   - name: build
     image: golang:1.13
     commands:
